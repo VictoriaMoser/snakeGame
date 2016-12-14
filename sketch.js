@@ -18,7 +18,7 @@ function pickLocation() {
   // decide number of columns - width of the window, divided by the scl
   var cols = floor(width/scl);
   var rows = floor(height/scl);
-  food = createVector(floor(random(cols)), floor(random(rows));
+  food = createVector(floor(random(cols)), floor(random(rows)));
   // multiply the food by the scale to expand it back
   food.mult(scl);
 }
@@ -27,6 +27,10 @@ function draw(){
   background(51);
   s.update();
   s.show();
+
+  if (s.eat(food)){
+    pickLocation();
+  }
 
   fill(255, 0, 100);
   rect(food.x, food.y, scl, scl);
